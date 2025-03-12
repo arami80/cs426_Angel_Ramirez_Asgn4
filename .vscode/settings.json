@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "ComputerEscapeAsignment4.sln"
+    "dotnet.defaultSolution": "cs426_Angel_Ramirez_Asgn4.sln"
 }

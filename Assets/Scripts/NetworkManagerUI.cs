@@ -21,6 +21,7 @@ public class NetworkManagerUI : MonoBehaviour
 
     private string joinCode;
     private int maxPlayers = 2;
+    private bool gameStarted = false; // ✅ Prevent multiple game starts
 
     private void Awake()
     {
@@ -34,6 +35,15 @@ public class NetworkManagerUI : MonoBehaviour
     {
         await UnityServices.InitializeAsync();
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
+    }
+
+    private void Update()
+    {
+        // ✅ Detect Enter Key and Start Game if Host
+        if (!gameStarted && NetworkManager.Singleton.IsServer && Input.GetKeyDown(KeyCode.Return))
+        {
+            StartGameButtonClicked();
+        }
     }
 
     public async void StartHostRelay()
@@ -64,9 +74,12 @@ public class NetworkManagerUI : MonoBehaviour
         startGameButton.gameObject.SetActive(false);
     }
 
-    // ✅ Host Clicks "Start Game"
+    // ✅ Host Clicks "Start Game" or Presses Enter
     public void StartGameButtonClicked()
     {
+        if (gameStarted) return; // ✅ Prevent multiple game starts
+        gameStarted = true; // ✅ Ensure only one start
+
         if (gameTimerManager == null)
         {
             Debug.LogError("❌ GameTimerManager is NULL! Make sure it's assigned in the Inspector.");
@@ -79,7 +92,7 @@ public class NetworkManagerUI : MonoBehaviour
             return;
         }
 
-        Debug.Log("✅ Host clicked Start Game. Starting Countdown...");
+        Debug.Log("✅ Host clicked Start Game or pressed Enter. Starting Countdown...");
 
         startGameButton.gameObject.SetActive(false); // ✅ Hide Start Button after clicking
         gameTimerManager.StartCountdownServerRpc();

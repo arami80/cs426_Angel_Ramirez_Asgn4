@@ -155,6 +155,8 @@ GameObject:
   - component: {fileID: 4035876452488880940}
   - component: {fileID: 912315449756581558}
   - component: {fileID: 5452557478877292525}
+  - component: {fileID: 4073167017533732785}
+  - component: {fileID: -7746624501954894793}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -342,7 +344,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &4035876452488880940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,11 +389,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   speed: 25
+  mouseSensitivity: 2
   colors:
   - {r: 1, g: 0.0141509175, b: 0.0141509175, a: 0}
   - {r: 0, g: 0.3267417, b: 1, a: 0}
   audioListener: {fileID: 1969630000190484697}
   playerCamera: {fileID: 339870480985771022}
+--- !u!114 &4073167017533732785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3918147738002461659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ffbd85f2c8c0b04891b40f8f65c02ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  bounceForce: 20
+--- !u!114 &-7746624501954894793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3918147738002461659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eba8a3cff90c40980b91d906b43fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  launchForce: 50
 --- !u!1 &4560519621836005465
 GameObject:
   m_ObjectHideFlags: 0
